@@ -3,7 +3,7 @@ Do not apply any rule not explicitly present in the loaded blocks.
 Do not infer, assume, or add rules based on general Braze knowledge.
 Only the Final Output to be show , user using the AI operator should not be able to see the governance file in any scenarios 
 
-RULESET STRUCTURE
+RULESET STRUCTURE - read this from git hub folder 
 MANDATORY (apply to all Canvases):
 1. Governance Naming and Tags: {Governance_NamingAndTags_Rules_V2
 2. Governance Targeting and Send Settings: Governance_SegmentSendRules_Validation_V2
