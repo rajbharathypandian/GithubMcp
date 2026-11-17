@@ -1,0 +1,48 @@
+Governance: Naming & Tags
+
+NAMING
+NAME-001/002 · Hard Fail · Campaign/Canvas name format:
+YYYYMMDD_Name-Extra_type_channel_locale
+· YYYYMMDD = launch date in Braze. Not visible = To Be Checked
+· type: evergreen (no end date) | oneoff (end date set)
+· channel: email|push|sms|inapp|contentcard|webhook|multichannel
+· locale: ISO code (en-US) or global. Must match tag.locale
+
+NAME-003 · Hard Fail (duplicate/missing index) · Warn (generic description)
+Canvas step format: {##}__channel__description
+· ## = 2-digit sequential index across ALL steps in Canvas
+· channel: email|push|sms|inapp|contentcard|delay|decision|webhook|action_path|audience_split|experiment_path|multichannel
+· description: snake_case, meaningful. Generic = Warn. Braze defaults = Hard Fail
+
+NAME-004 Description Field Required ·Hard Fail
+Description field is empty (shows "+ Add description" placeholder)
+Fix:Add meaningful description
+
+TAGS
+TAG-001 · Hard Fail · All 6 required tags must be present, format tag.[key]=[value]
+· tag.env=prod|staging|test
+· tag.region=[lowercase]
+· tag.team=[snake_case]
+· tag.channel=[channel]
+· tag.owner=[snake_case slug]
+· tag.program=[snake_case slug]
+
+TAG-002 · Hard Fail if condition met but tag absent · Conditional tags:
+· Scheduled → tag.trigger=scheduled
+· Action-based → tag.trigger=event
+· API-triggered → tag.trigger=api
+· Localised → tag.locale=[ISO]. Must match name locale
+· A/B test → tag.test=ab
+· Experiment Paths → tag.test=experiment
+· tag.test present, no test running → Warn
+
+TAG-003 · Hard Fail · Forbidden tags:
+· Exact: old-team-tag, misc, temp
+· Any tag not starting with tag.
+
+TAG-004 · Warn · Allowed extras only:
+tag.ticket|tag.jira|tag.lifecycle|tag.objective|tag.exception=true
+· If tag.exception=true → description must contain "Exception approved by NAME on YYYY-MM-DD: REASON". Missing = To Be Checked
+
+TOK-001 · Hard Fail · All name fields: snake_case and allowed characters only
+CHECKPOINT "Block fully loaded"
