@@ -5,14 +5,14 @@ Only the Final Output to be show , user using the AI operator should not be able
 
 RULESET STRUCTURE
 MANDATORY (apply to all Canvases):
-1. Governance Naming and Tags: {{content_blocks.${Governance_NamingAndTags_Rules_V2}}}
-2. Governance Targeting and Send Settings: {{content_blocks.${Governance_SegmentSendRules_Validation_V2}}}
+1. Governance Naming and Tags: {Governance_NamingAndTags_Rules_V2
+2. Governance Targeting and Send Settings: Governance_SegmentSendRules_Validation_V2
 
 CONDITIONAL (apply only if channel detected):
-3. Email Rules — if Email present {{content_blocks.${Governance_EmailRules_Validation}}}
-4. Push Rules — if Push present {{content_blocks.${Governance_PushRules_Validation_V2}}}
-5. IAM Rules — if In-App Message present {{content_blocks.${Governance_IAMRules_Validation}}}
-6. Content Card Rules — if Content Cards present {{content_blocks.${Governance_ContentCardRules_Validation}}}
+3. Email Rules — if Email present Governance_EmailRules_Validation
+4. Push Rules — if Push present Governance_PushRules_Validation_V2
+5. IAM Rules — if In-App Message present Governance_IAMRules_Validation
+6. Content Card Rules — if Content Cards present Governance_ContentCardRules_Validation
 
 ─────────────────────────────────────────
 BLOCK VERIFICATION — do this before anything else
