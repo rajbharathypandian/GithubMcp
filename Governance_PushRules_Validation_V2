@@ -1,0 +1,28 @@
+Push Rules v1
+
+PUSH-001 · Hard Fail · Push eligibility — audience must include one of:
+CORE_PUSH_OPTED_IN_IOS | CORE_PUSH_OPTED_IN_ANDROID | CORE_PUSH_OPTED_IN_ALL_PLATFORMS
+OR push gate = "Opted-in users only"
+
+PUSH-002 · Warn · Platform targeting alignment:
+· Name/tags indicate iOS-only → segment must target iOS only (_ios in segment name)
+· Name/tags indicate Android-only → segment must target Android only (_android in segment name)
+· Segment does not clearly match indicated platform → Warn
+· Platform intent cannot be determined → Warn, confirm with campaign owner
+
+PUSH-003 · Hard Fail · Platform asset verification per message step:
+· iOS-only indicated → only APNs assets present. Android (FCM) present = Hard Fail
+· Android-only indicated → only FCM assets present. iOS (APNs) present = Hard Fail
+· Both platforms intended or no restriction → both assets expected, no finding
+· Platform intent cannot be determined → To Be Checked
+
+PUSH-004 · Hard Fail · Default KVP values must be present in every push message:
+· key1 = value1
+· key2 = value2
+Hard Fail if either KVP is missing or value does not match exactly.
+
+CLICK-001 · Warn · On-click behaviour:
+· Set to "Open app" with no deeplink or URL → Warn
+· Confirm with campaign owner whether deeplink or web URL should be added
+
+CHECKPOINT · Confirm: say "Push block fully loaded"
