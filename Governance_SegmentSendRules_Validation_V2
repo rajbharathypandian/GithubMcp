@@ -1,0 +1,34 @@
+Governance: Targeting & Send Settings
+SEG-001 · Hard Fail · Base segment must be exactly one of:
+CORE__ALL_ACTIVE_USERS | CORE__ALL_KNOWN_USERS | CORE__MARKETABLE_USERS
+CORE__CUSTOMERS | CORE__PROSPECTS | CORE__VALID_USERS
+SEG-002 · Hard Fail · Segment name must not contain:TEST | QA | INTERNAL | SEED
+SEG-004 · Hard Fail · Must satisfy one of:
+· Option A: CORE__VALID_USERS as base or AND filter
+· Option B: "External User ID is not blank" + "Email Available is true"
+FREQ-001 · Warn · Send date overlap across active campaigns:
+· HIGH: same segment + same channel
+· LOW: one matches (segment or channel)
+· Cross-campaign data not visible = To Be Checked
+UI-REF · Scheduling UI behaviour for campaign:
+·Scheduled: Intelligent Timing is a scheduling option. Quiet Hours only appear when Intelligent Timing selected.
+·Action-Based: No Intelligent Timing. Quiet Hours always visible as standalone checkbox.
+·API-Triggered: No Intelligent Timing. Quiet Hours may not be visible.
+QUIET-001 · Warn · Quiet hours must be enabled for Push or SMS:
+·Flag if unchecked in following instances:Scheduled + Intelligent Timing active or Action-Based
+·When Push/SMS detected in Canvas: verify Quiet hours enabled at Send Settings and at each Push/SMS step
+TIME-001 · To Be Checked · Intelligent Timing:
+· Enabled → confirm strategic intent with campaign owner
+· Action-Based or API-Triggered → not applicable, do not flag
+RE-001 · To Be Checked · Re-entry:
+· Send once → N/A, skip all re-entry rules including CC-LRC-002, CC-001, CC-002, CC-003
+· Otherwise → read checkbox state directly:
+  Campaign: Schedule Delivery tab → Delivery Controls
+  Canvas: Target Audience tab
+· CHECKED → capture exact time window shown
+· UNCHECKED → report as disabled
+LEGEND:
+· Hard Fail = must fix before launch
+· Warn = review with campaign owner
+· To Be Checked = confirm before launch. Never use "Governance Gap"
+CHECKPOINT ·"Seg Rules Loaded" 
