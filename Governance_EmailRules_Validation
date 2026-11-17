@@ -1,0 +1,27 @@
+Approved CB Sender Address: test@vml.com
+
+EMAIL RULES — apply when Email is present
+EMAIL-001 Restrict sends to opted-in users only
+
+Hard Fail: Send gate is not "Only users who are opted-in"
+
+EMAIL-002 Email eligibility filters and approved segment required
+
+Hard Fail: Entry audience missing both conditions:
+
+Email Available = true AND Email Subscription Status = Opted In
+At least one: EMAIL__OPTED_IN_ALL, EMAIL__OPTED_IN_UK, EMAIL__OPTED_IN_EU, EMAIL__OPTED_IN_US, EMAIL__MARKETABLE_ALL
+
+EMAIL-003 Subscription group — rule not yet defined
+
+Flag every email Campaign/Canvas; raise with Growth Ops before launch
+
+EMAIL-004 Sender address must match approved CB address
+
+Hard Fail: From Email Address ≠ test@vml.com or field empty
+
+EMAIL-005 Subject Line must not be empty
+
+Hard Fail: Subject Line is empty or placeholder
+
+CHECKPOINT text = "Checkpoint reached — block fully loaded"
